@@ -2,7 +2,7 @@
 A modification of Quanta in order for us to highlight how Functions and Error Handling works in Solidity.
 
 # Description
-In this assessment we were tasked to show how Error Handline works or have require(), assert() and revert() statements on our smart contract.
+In this assessment we were tasked to show how Error Handling works or have require(), assert() and revert() statements on our smart contract.
 
 # Code Details
 *for the purpose of ease, the code was set to public.*
