@@ -1,5 +1,5 @@
 # My entry for the Functions and Errors Module - ETH+AVAX Project in Metacrafters
-My creation of 'Quanta', a token made with Solidity.
+A modification of Quanta in order for us to highlight how Functions and Error Handling works in Solidity.
 
 # Description
 In this assessment we were tasked to show how Error Handline works or have require(), assert() and revert() statements on our smart contract.
