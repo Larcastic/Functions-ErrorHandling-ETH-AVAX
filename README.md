@@ -5,7 +5,7 @@ A simple, donation smart contract.
 In this assessment we were tasked to show how Error Handling works or have require(), assert() and revert() statements on our smart contract.
 
 # Code Details
-For this project, we made a smart contract that will handle donations using ether via Solidity.
+For this project, we made a smart contract that will handle donations using Ether via Solidity.
 
 - For the first require() statement, it is housed inside on the onlyOwner modifier and the smart contract restricts that only the owner can do the donations and use the smart contract.
     ```
