@@ -1,36 +1,27 @@
 # My entry for the Functions and Errors Module - ETH+AVAX Project in Metacrafters
-A modification of Quanta in order for us to highlight how Functions and Error Handling works in Solidity.
+A simple, donation smart contract.
 
 # Description
 In this assessment we were tasked to show how Error Handling works or have require(), assert() and revert() statements on our smart contract.
 
 # Code Details
-*for the purpose of ease, the code was set to public.*
-- We recycled our code for the Intro ETH Assesment that creates, mints and burns our own Token in Solidity.
+For this project, we made a smart contract that will handle donations using ether via Solidity.
 
-- For the require() statement, we placed it on the minting function of the smart contract in order for us to catch if ever the user were to implement a _value less than 10.
+- For the first require() statement, it is housed inside on the onlyOwner modifier and the smart contract restricts that only the owner can do the donations and use the smart contract.
     ```
-    // mint function
-    function mint (address _address, uint _value) public {
-        totalSupply += _value;
-        balances[_address] += _value;
-        
-        require(_value > 10, "Input must be greater than 10");
-    }
+    require(msg.sender == owner, "Only the owner can perform this action.");
     ```
-  - For the revert() statement, we made our own function which will then revert the code to its previous state if ever the user were to input a _value less than or equal to 10.
+- For the second require() statement, it is encased via the donate() function and the smart contract demands that the minimumDonation should not be lower that the msg.value.
+    ```
+    require(msg.value >= minimumDonation, "Donation amount is too low.");
+    ```
+  - For the revert() statement, it requires the owner to have a donation that will not equal to zero.
      ```
-       function testRevert(uint _value) public pure {
-        if (_value <= 10) {
-            revert("Input must be greater than 10");
-        }
-    }
+     revert("Minimum donation cannot be zero.");
     ```
-- Lastly, we made an assert() statement to assure that our smart contract's total supply will have its totalSupply at 0 initially, since assert() will proceed to run if its condition is met.
+- Lastly, we made an assert() statement to assure that the owner's address will not equal to zero.
     ```
-   function testAssert() public view {
-        assert(totalSupply == 0);
-    }
+    assert(owner != address(0));
     ```
 # Author
 Lars James Manansala (larsjamesmanansala@gmail.com)
