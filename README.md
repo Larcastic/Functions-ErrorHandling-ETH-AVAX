@@ -1,27 +1,29 @@
 # My entry for the Functions and Errors Module - ETH+AVAX Project in Metacrafters
-A simple, donation smart contract.
+A simple and unique smart contract that acts as a parking toll.
 
 # Description
-In this assessment we were tasked to show how Error Handling works or have require(), assert() and revert() statements on our smart contract.
+In this assessment we were tasked to show how Error Handling works or have require(), assert() and revert() statements on our smart contract and will incorporate real-world scenarios.
 
 # Code Details
-For this project, we made a smart contract that will handle donations using Ether via Solidity.
+For this project, we made a smart contract that will handle parking fees using Ether via Solidity.
 
-- For the first require() statement, it is housed inside on the onlyOwner modifier and the smart contract restricts that only the owner can do the donations and use the smart contract.
+- For the first require() statement, it is housed inside on the park() function and the smart contract the user to pay a parking fee of 1 ETH.
     ```
-    require(msg.sender == owner, "Only the owner can perform this action.");
+     require(msg.value == parkingFee, "Parking fee is required!");
     ```
-- For the second require() statement, it is encased via the donate() function and the smart contract demands that the minimumDonation should not be lower that the msg.value.
+- For the second require() statement, it is also housed inside the park() function and the smart contract checks if the user was parked today.
     ```
-    require(msg.value >= minimumDonation, "Donation amount is too low.");
+    require(parkedUntil[msg.sender] < block.timestamp, "You are already parked for today!");
     ```
-  - For the revert() statement, it requires the owner to have a donation that will not equal to zero.
+  - For the assert() statement, it checks if the parking time data is consistent.
      ```
-     revert("Minimum donation cannot be zero.");
+    assert(parkedUntil[user] >= block.timestamp);
     ```
-- Lastly, we made an assert() statement to assure that the owner's address will not equal to zero.
+- Lastly, we made an revert() statement that reverts the smart contract at its previous state if the user hasn't parked yet or the parking time is over..
     ```
-    assert(owner != address(0));
+     if (parkedUntil[msg.sender] < block.timestamp) {
+            revert("Parking time is over or you haven't parked yet!");
+        }
     ```
 # Author
 Lars James Manansala (larsjamesmanansala@gmail.com)
